@@ -1,4 +1,31 @@
-<div class="content" role="main">
-  <p>Patata</p>
+<mat-card class="last"><div class="lastInner"><span>Last round</span> <span>{{lastSuccs}}✅</span> <span>{{lastFails}}❌</span></div></mat-card>
+<div class="content">
+  <mat-card class="npc" *ngFor="let character of characters" [ngClass]="{'dead': character.status === 'dead', 'injured': character.status === 'injured', 'critical': character.status === 'critical', 'paused': character.stop}">
+    <div class="info">
+      <img alt="portrait" class="token" src="{{character.url}}" height="50" width="50px">
+      <span>{{character.name}}</span>
+      <!--<span>{{character.roll}}</span>-->
+      <span class="heals">{{character.heals}} <span class="heal" (click)="heal(character)">❤</span></span>
+    </div>
+    <div class="diff">
+    <span class="item" [ngClass]="{'active': character.difficulty === 0}"
+          (click)="character.difficulty=0">🐁</span>
+      <span class="item" [ngClass]="{'active': character.difficulty === 1}"
+            (click)="character.difficulty=1">🐍</span>
+      <span class="item" [ngClass]="{'active': character.difficulty === 3}"
+            (click)="character.difficulty=3">🐅</span>
+      <span class="item" [ngClass]="{'active': character.difficulty === 5}"
+            (click)="character.difficulty=5">🦖</span>
+    </div>
+    <div class="dices">
+      <span class="dice" *ngFor="let dice of character.dices">{{dice}}</span>
+    </div>
+    <div class="stop">
+      <span *ngIf="!character.stop" (click)="stopSwitch(character)">⬛</span>
+      <span *ngIf="character.stop" (click)="stopSwitch(character)">►</span>
+    </div>
+  </mat-card>
 </div>
-
+<button mat-raised-button id="roll" color="primary" (click)="roll()">Roll!</button>
+<button mat-raised-button id="reset" (click)="reset()">reset</button>
+<span class="total">Total: {{totalSuccs}}✅ {{totalFails}}❌</span>
