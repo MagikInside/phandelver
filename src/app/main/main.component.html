@@ -1,4 +1,34 @@
-<mat-card class="last"><div class="lastInner"><span>Last round</span> <span>{{lastSuccs}}✅</span> <span>{{lastFails}}❌</span></div></mat-card>
+<div class="info-content">
+  <section class="round-info rounds">
+    <div class="icon">
+      <mat-icon>casino_outlined</mat-icon>
+    </div>
+    <div class="number">
+      <span class="amount">{{round}}</span>
+      <span class="unit">rounds</span>
+    </div>
+  </section>
+  <section class="round-info last-succ">
+    <div class="icon">
+      <mat-icon>check_circle</mat-icon>
+    </div>
+    <div class="number">
+      <span class="amount">{{lastSuccs}}</span>
+      <span class="unit">successes</span>
+    </div>
+  </section>
+  <section class="round-info last-fails">
+    <div class="icon">
+      <mat-icon>cancel</mat-icon>
+    </div>
+    <div class="number">
+      <span class="amount">{{lastFails}}</span>
+      <span class="unit">fails</span>
+    </div>
+  </section>
+</div>
+
+
 <div class="content">
   <mat-card class="npc" *ngFor="let character of characters" [ngClass]="{'dead': character.status === 'dead', 'injured': character.status === 'injured', 'critical': character.status === 'critical', 'paused': character.stop}">
     <div class="info">
