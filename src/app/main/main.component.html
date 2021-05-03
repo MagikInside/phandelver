@@ -6,18 +6,18 @@
       <img alt="portrait" class="token" src="{{character.url}}" height="50" width="50px">
       <span>{{character.name}}</span>
       <!--<span>{{character.roll}}</span>-->
-      <span class="heals">{{character.heals}} <span class="heal" (click)="heal(character)">❤</span></span>
     </div>
-    <div class="diff">
-    <span class="item" [ngClass]="{'active': character.difficulty === 0}"
-          (click)="character.difficulty=0">🐁</span>
-      <span class="item" [ngClass]="{'active': character.difficulty === 1}"
-            (click)="character.difficulty=1">🐍</span>
-      <span class="item" [ngClass]="{'active': character.difficulty === 3}"
-            (click)="character.difficulty=3">🐅</span>
-      <span class="item" [ngClass]="{'active': character.difficulty === 5}"
-            (click)="character.difficulty=5">🦖</span>
+   <div class="diff">
+      <img alt="mouse difficulty" src="assets/mouse.svg" class="item" [ngClass]="{'active': character.difficulty === 0}"
+            (click)="character.difficulty=0">
+     <img alt="cobra difficulty" src="assets/cobra.svg"  class="item" [ngClass]="{'active': character.difficulty === 1}"
+            (click)="character.difficulty=1">
+     <img  alt="lion difficulty" src="assets/leo.svg"  class="item" [ngClass]="{'active': character.difficulty === 3}"
+            (click)="character.difficulty=3">
+     <img  alt="dragon difficulty" src="assets/b-dragon.svg"  class="item" [ngClass]="{'active': character.difficulty === 5}"
+            (click)="character.difficulty=5">
     </div>
+    <span class="heals">{{character.heals}} <span class="heal" (click)="heal(character)">❤</span></span>
     <div class="dices">
       <span class="dice" *ngFor="let dice of character.dices">{{dice}}</span>
     </div>
