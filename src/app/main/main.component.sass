@@ -15,6 +15,17 @@
       display: flex
       flex-direction: column
       align-items: center
+      .heals
+        position: absolute
+        left: 44px
+        top: 4px
+        .heal
+          font-size: 32px
+          cursor: pointer
+          color: #2196f3
+          padding: 2px
+        .num-of-heals
+          position: absolute
     .diff
       height: 75px
       width: 76px
@@ -22,12 +33,38 @@
       flex-direction: column
       justify-content: center
       flex-wrap: wrap
+      flex: 0 0 76px
       .item
         padding: 5px 4px
         height: 26px
         width: 26px
         font-size: 26px
         line-height: 26px
+    .dices
+      border: 1px solid #d5d5d5
+      margin: 8px
+      height: 60px
+      flex: 1 1 auto
+      display: flex
+      flex-wrap: wrap
+      .dice
+        font-size: 16px
+        margin: 0 10px
+        height: 16px
+        width: 16px
+        .❌
+          color: #f44336
+        .✅
+          color: #4caf50
+        .➖
+          color: #bdbdbd
+        .💥
+          color: #ffca28
+        .💀
+          color: #ba000d
+
+
+
 .npc.dead
   opacity: 0.3
   background-color: black
@@ -44,14 +81,7 @@
 
 .token
   margin-bottom: 5px
-.dices
-  margin-left: 20px
-  flex: 1 1 auto
-  display: flex
-  flex-wrap: wrap
-.dice
-  font-size: 16px
-  margin: 0 10px
+
 .diff
   display: flex
   flex-direction: column
@@ -89,9 +119,7 @@
   justify-content: space-around
   font-size: 22px
   flex: 0 0 300px
-.heal
-  color: #673ab7
-  cursor: pointer
+
 .total
   float: right
   padding: 5px
