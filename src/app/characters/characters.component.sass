@@ -1,0 +1,120 @@
+.content
+  width: 100%
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  .npc
+    height: 75px
+    background-color: #f5f5f5
+    margin-bottom: 10px
+    padding: 10px 16px
+    display: flex
+    align-items: center
+    width: 47%
+    .info
+      display: flex
+      flex-direction: column
+      align-items: center
+      .heals
+        position: absolute
+        left: 44px
+        top: 4px
+        .heal
+          font-size: 32px
+          cursor: pointer
+          color: #2196f3
+          padding: 2px
+        .num-of-heals
+          position: absolute
+    .diff
+      height: 75px
+      width: 76px
+      display: flex
+      flex-direction: column
+      justify-content: center
+      flex-wrap: wrap
+      flex: 0 0 76px
+      .item
+        padding: 5px 4px
+        height: 26px
+        width: 26px
+        font-size: 26px
+        line-height: 26px
+    .dices
+      border: 1px solid #d5d5d5
+      margin: 8px
+      height: 60px
+      flex: 1 1 auto
+      display: flex
+      flex-wrap: wrap
+      .dice
+        font-size: 16px
+        margin: 0 10px
+        height: 16px
+        width: 16px
+        .❌
+          color: #f44336
+        .✅
+          color: #4caf50
+        .➖
+          color: #bdbdbd
+        .💥
+          color: #ffca28
+        .💀
+          color: #ba000d
+
+
+
+.npc.dead
+  opacity: 0.3
+  background-color: black
+.npc.critical
+  opacity: 0.7
+  background-color: red
+.npc.injured
+  opacity: 0.8
+  background-color: #ff9b71
+
+.npc.paused
+  opacity: 0.8
+  background-color: #673ab7
+
+.token
+  margin-bottom: 5px
+
+.diff
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+  margin-left: 20px
+.item
+  cursor: pointer
+  opacity: 0.3
+
+.item:hover
+  opacity: 0.8
+.item.active
+  opacity: 1
+
+.stop
+  flex: 0 0 20px
+  cursor: pointer
+  opacity: 0.6
+  font-size: 22px
+  color: white
+.stop:hover
+  opacity: 1
+
+
+
+.last
+  display: flex
+  justify-content: center
+
+  margin-bottom: 20px
+.lastInner
+  display: flex
+  justify-content: space-around
+  font-size: 22px
+  flex: 0 0 300px

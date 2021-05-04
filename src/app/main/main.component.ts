@@ -7,11 +7,13 @@ import {Character} from '../models/character.model';
   styleUrls: ['./main.component.sass']
 })
 export class MainComponent implements OnInit {
+
   round = 0;
   lastSuccs = 0;
   lastFails = 0;
   totalSuccs = 0;
   totalFails = 0;
+
 
   characters: Character[] = [
     {
@@ -136,8 +138,7 @@ export class MainComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   roll(): void {
     this.round++;
@@ -194,14 +195,6 @@ export class MainComponent implements OnInit {
     });
   }
 
-  stopSwitch(character: Character): void {
-    character.stop = !character.stop;
-  }
-
-  heal(character: Character): void {
-    character.heals++;
-    this.calculateState(character);
-  }
 
   calculateState(char: Character): void {
     const wounds = char.dices.filter((dice) => dice === '❌').length + char.dices.filter((dice) => dice === '💀').length * 2 - char.heals;
@@ -216,12 +209,4 @@ export class MainComponent implements OnInit {
       char.status = 'ok';
     }
   }
-
- /* total(): void {
-    this.characters.forEach(c => {
-
-    });
-  }*/
-
-
 }

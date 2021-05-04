@@ -1,43 +1,11 @@
 <app-info [round]="round" [lastSuccs]="lastSuccs" [lastFails]="lastFails"
           [totalSuccs]="totalSuccs" [totalFails]="totalFails"></app-info>
 
-<div class="content">
-  <mat-card class="npc" *ngFor="let character of characters" [ngClass]="{'dead': character.status === 'dead', 'injured': character.status === 'injured', 'critical': character.status === 'critical', 'paused': character.stop}">
-    <div class="info">
-      <img alt="portrait" class="token" src="{{character.url}}" height="50" width="50px">
-      <span>{{character.name}}</span>
-      <span class="heals"><span class="heal" (click)="heal(character)">❤</span><span class="num-of-heals">{{character.heals}}</span></span>
-      <!--<span>{{character.roll}}</span>-->
-    </div>
-    <div class="diff">
-      <img alt="mouse difficulty" src="assets/mouse.svg" class="item" [ngClass]="{'active': character.difficulty === 0}"
-           (click)="character.difficulty=0">
-      <img alt="cobra difficulty" src="assets/cobra.svg"  class="item" [ngClass]="{'active': character.difficulty === 1}"
-           (click)="character.difficulty=1">
-      <img  alt="lion difficulty" src="assets/leo.svg"  class="item" [ngClass]="{'active': character.difficulty === 3}"
-            (click)="character.difficulty=3">
-      <img  alt="dragon difficulty" src="assets/b-dragon.svg"  class="item" [ngClass]="{'active': character.difficulty === 5}"
-            (click)="character.difficulty=5">
-    </div>
+<app-characters [characters]="characters"></app-characters>
 
-    <div class="dices">
-      <span class="dice" *ngFor="let dice of character.dices">
-        <mat-icon class="❌"  *ngIf="dice==='❌'">close</mat-icon>
-        <mat-icon class="✅" *ngIf="dice==='✅'">check</mat-icon>
-        <mat-icon class="➖" *ngIf="dice==='➖'">unfold_less</mat-icon>
-        <mat-icon class="💥" *ngIf="dice==='💥'">bolt</mat-icon>
-        <mat-icon class="💀" *ngIf="dice==='💀'">radio_button_checked</mat-icon>
-      </span>
-    </div>
-    <div class="stop">
-      <span *ngIf="!character.stop" (click)="stopSwitch(character)">⬛</span>
-      <span *ngIf="character.stop" (click)="stopSwitch(character)">►</span>
-    </div>
-  </mat-card>
-  <div class="buttons">
-    <button mat-raised-button id="roll" color="primary" (click)="roll()">Roll!</button>
-    <button mat-raised-button id="reset" (click)="reset()">reset</button>
-  </div>
+<div class="buttons">
+  <button mat-raised-button id="roll" color="primary" (click)="roll()">Roll!</button>
+  <button mat-raised-button id="reset" (click)="reset()">reset</button>
 </div>
 
 

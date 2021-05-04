@@ -10,13 +10,15 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { InfoComponent } from './info/info.component';
+import { CharactersComponent } from './characters/characters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    InfoComponent
+    InfoComponent,
+    CharactersComponent
   ],
   imports: [
     BrowserModule,
