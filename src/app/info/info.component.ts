@@ -9,6 +9,8 @@ export class InfoComponent implements OnInit {
   @Input() round = 0;
   @Input() lastSuccs = 0;
   @Input() lastFails = 0;
+  @Input() totalSuccs = 0;
+  @Input() totalFails = 0;
 
   constructor() { }
 
