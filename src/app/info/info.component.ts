@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Round} from '../models/round.model';
 
 @Component({
   selector: 'app-info',
@@ -6,11 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./info.component.sass']
 })
 export class InfoComponent implements OnInit {
-  @Input() round = 0;
-  @Input() lastSuccs = 0;
-  @Input() lastFails = 0;
-  @Input() totalSuccs = 0;
-  @Input() totalFails = 0;
+  @Input() round: Round | null = {number: 0, lastSuccs: 0, lastFails: 0, totalSuccs: 0, totalFails: 0} ;
 
   constructor() { }
 

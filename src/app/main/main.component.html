@@ -1,7 +1,6 @@
-<app-info [round]="round" [lastSuccs]="lastSuccs" [lastFails]="lastFails"
-          [totalSuccs]="totalSuccs" [totalFails]="totalFails"></app-info>
+<app-info [round]="round$ | async"></app-info>
 
-<app-characters [characters]="characters"></app-characters>
+<app-characters [characters]="characters$ | async" [characterStatus]="characterStatus$ | async"></app-characters>
 
 <div class="buttons">
   <button mat-raised-button id="roll" color="primary" (click)="roll()">Roll!</button>

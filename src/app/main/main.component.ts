@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Character} from '../models/character.model';
 import {GameFacadeService} from '../game-facade.service';
+import {Observable} from 'rxjs';
+import {CharacterStatus} from '../models/character-status.model';
+import {Round} from '../models/round.model';
 
 @Component({
   selector: 'app-main',
@@ -9,20 +12,23 @@ import {GameFacadeService} from '../game-facade.service';
 })
 export class MainComponent implements OnInit {
 
-  round = 0;
-  lastSuccs = 0;
-  lastFails = 0;
-  totalSuccs = 0;
-  totalFails = 0;
-
+  characters$: Observable<Character[]>;
+  characterStatus$: Observable<CharacterStatus[]>;
+  round$: Observable<Round>;
 
   characters: Character[] = [];
 
   constructor(private game: GameFacadeService) {
-    this.game.characters$.subscribe((characters) => this.characters = characters);
+    this.characters$ = this.game.characters$;
+    this.characterStatus$ = this.game.characterStatus$;
+    this.round$ = this.game.round$;
   }
   ngOnInit(): void {}
 
+  roll(): void { }
+
+  reset(): void {}
+  /*
   roll(): void {
     this.round++;
     this.lastFails = 0;
@@ -91,5 +97,5 @@ export class MainComponent implements OnInit {
     } else {
       char.status = 'ok';
     }
-  }
+  }*/
 }
