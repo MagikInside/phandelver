@@ -31,7 +31,8 @@ export class RollService {
       character.roll = this.rollDice();
       const margin = character.attack - (character.roll + character.difficulty);
       const result = this.getResult(margin, character.roll);
-      return {...character, dices: [...character.dices, result] };
+      const condition = this.calculateCondition(character);
+      return {...character, dices: [...character.dices, result], condition };
     }
     return character;
   }
@@ -79,6 +80,15 @@ export class RollService {
 
   isAbleToDice(character: Character): boolean {
     return (character.condition !== 'dead' && !character.stop);
+  }
+
+  calculateCondition(character: Character): string {
+    const wounds = character.dices.filter((dice) => dice === '❌').length
+      + character.dices.filter((dice) => dice === '💀').length * 2 - character.heals;
+    if (wounds > character.defense) { return 'dead'; }
+    else if (wounds === character.defense) { return 'critical'; }
+    else if (wounds > Math.floor(character.defense / 2)) { return 'injured'; }
+    else { return 'ok'; }
   }
 
 
