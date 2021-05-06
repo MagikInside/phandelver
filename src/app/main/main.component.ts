@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Character} from '../models/character.model';
 import {GameFacadeService} from '../game-facade.service';
 import {Observable} from 'rxjs';
-import {CharacterStatus} from '../models/character-status.model';
 import {Round} from '../models/round.model';
 
 @Component({
@@ -13,14 +12,12 @@ import {Round} from '../models/round.model';
 export class MainComponent implements OnInit {
 
   characters$: Observable<Character[]>;
-  characterStatus$: Observable<CharacterStatus[]>;
   round$: Observable<Round>;
 
   characters: Character[] = [];
 
   constructor(private game: GameFacadeService) {
     this.characters$ = this.game.characters$;
-    this.characterStatus$ = this.game.characterStatus$;
     this.round$ = this.game.round$;
   }
   ngOnInit(): void {}

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Character} from '../models/character.model';
-import {CharacterStatus} from '../models/character-status.model';
 
 @Component({
   selector: 'app-characters',
@@ -10,7 +9,6 @@ import {CharacterStatus} from '../models/character-status.model';
 export class CharactersComponent implements OnInit {
 
   @Input() characters: Character[] | null = [];
-  @Input() characterStatus: CharacterStatus[] | null = [];
 
   ngOnInit(): void {
   }

@@ -1,25 +1,24 @@
 <div class="content">
-  <ng-container *ngIf="characterStatus">
-    <mat-card class="npc" *ngFor="let character of characters; let i = index" [ngClass]="{'dead': characterStatus[i]?.condition === 'dead', 'injured': characterStatus[i]?.condition === 'injured', 'critical': characterStatus[i]?.condition === 'critical', 'paused': characterStatus[i]?.stop}">
+    <mat-card class="npc" *ngFor="let character of characters; let i = index" [ngClass]="{'dead': character.condition === 'dead', 'injured': character.condition === 'injured', 'critical': character.condition === 'critical', 'paused': character.stop}">
       <div class="info">
         <img alt="portrait" class="token" src="{{character.url}}" height="50" width="50px">
         <span>{{character.name}}</span>
-        <span class="heals"><span class="heal" (click)="heal(character)">❤</span><span class="num-of-heals">{{characterStatus[i]?.heals}}</span></span>
+        <span class="heals"><span class="heal" (click)="heal(character)">❤</span><span class="num-of-heals">{{character.heals}}</span></span>
         <!--<span>{{character.roll}}</span>-->
       </div>
       <div class="diff">
-        <img alt="mouse difficulty" src="assets/mouse.svg" class="item" [ngClass]="{'active': characterStatus[i]?.difficulty === 0}">
-        <!-- (click)="characterStatus[i]?.difficulty=0">-->
-        <img alt="cobra difficulty" src="assets/cobra.svg"  class="item" [ngClass]="{'active': characterStatus[i]?.difficulty === 1}">
-        <!-- (click)="characterStatus[i]?.difficulty=1">-->
-        <img  alt="lion difficulty" src="assets/leo.svg"  class="item" [ngClass]="{'active': characterStatus[i]?.difficulty === 3}">
-        <!-- (click)="characterStatus[i]?.difficulty=3">-->
-        <img  alt="dragon difficulty" src="assets/b-dragon.svg"  class="item" [ngClass]="{'active': characterStatus[i]?.difficulty === 5}">
-        <!-- (click)="characterStatus[i]?.difficulty=5">-->
+        <img alt="mouse difficulty" src="assets/mouse.svg" class="item" [ngClass]="{'active': character.difficulty === 0}">
+        <!-- (click)="character.difficulty=0">-->
+        <img alt="cobra difficulty" src="assets/cobra.svg"  class="item" [ngClass]="{'active': character.difficulty === 1}">
+        <!-- (click)="character.difficulty=1">-->
+        <img  alt="lion difficulty" src="assets/leo.svg"  class="item" [ngClass]="{'active': character.difficulty === 3}">
+        <!-- (click)="character.difficulty=3">-->
+        <img  alt="dragon difficulty" src="assets/b-dragon.svg"  class="item" [ngClass]="{'active': character.difficulty === 5}">
+        <!-- (click)="character.difficulty=5">-->
       </div>
 
       <div class="dices">
-        <span class="dice" *ngFor="let dice of characterStatus[i]?.dices">
+        <span class="dice" *ngFor="let dice of character.dices">
           <mat-icon class="❌"  *ngIf="dice==='❌'">close</mat-icon>
           <mat-icon class="✅" *ngIf="dice==='✅'">check</mat-icon>
           <mat-icon class="➖" *ngIf="dice==='➖'">unfold_less</mat-icon>
@@ -28,9 +27,8 @@
         </span>
       </div>
       <div class="stop">
-        <span *ngIf="!characterStatus[i]?.stop" (click)="stopSwitch(character)">⬛</span>
-        <span *ngIf="characterStatus[i]?.stop" (click)="stopSwitch(character)">►</span>
+        <span *ngIf="!character.stop" (click)="stopSwitch(character)">⬛</span>
+        <span *ngIf="character.stop" (click)="stopSwitch(character)">►</span>
       </div>
     </mat-card>
-  </ng-container>
 </div>

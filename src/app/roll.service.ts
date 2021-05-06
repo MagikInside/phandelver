@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {GameState} from './models/game-state.model';
+import {Character} from './models/character.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,31 +11,36 @@ export class RollService {
   constructor() { }
 
   roll(gameState: GameState): GameState {
-    const newRoundNumber = gameState.round.number + 1;
-
-    const newCharacterStatus = gameState.characterStatus.map((status) => {
-      if (status.condition !== 'dead' && !status.stop) {
-        const character = gameState.characters.find(char => char.id = status.charId);
-        const diceRoll = (this.rolld6() + this.rolld6() + this.rolld6());
-        status.roll = diceRoll;
-        if (character) {
-          const margin = character.attack - (diceRoll + status.difficulty);
-          const result = this.getResult(margin, diceRoll);
-          return {...status, dices: [...status.dices, result] };
-        }
-      }
-      return status;
-    });
-    const [succs, fails] = newCharacterStatus.reduce((acc, curr) => {
-      const numSuccsAndFails = this.getNumOfSuccsAndFails(curr.dices[curr.dices.length - 1]);
-      return [acc[0] + numSuccsAndFails[0], acc[1] + numSuccsAndFails[1]];
-    }, [0, 0]);
-    const newRound = {number: newRoundNumber, lastSuccs: succs, lastFails: fails,
-      totalSuccs: gameState.round.totalSuccs + succs, totalFails: gameState.round.totalFails + fails};
-    return {...gameState, characterStatus: newCharacterStatus, round: newRound};
+    const newCharacters = gameState.characters.map(this.addRoundResultToCharacter);
+    const [roundSuccs, roundFails] = this.getRoundSucssAndFails(newCharacters);
+    const round = {number: gameState.round.number + 1, lastSuccs: roundSuccs, lastFails: roundFails,
+      totalSuccs: gameState.round.totalSuccs + roundSuccs, totalFails: gameState.round.totalFails + roundFails};
+    return {...gameState, characters: newCharacters, round};
   }
 
-  rolld6(): number {
+  private getRoundSucssAndFails(characters: Character[]): [number, number] {
+    return characters.reduce((acc, character) => {
+      const [succs, fails] = this.getLastRoundSuccsAndFails(character);
+      return [acc[0] + succs, acc[1] + fails];
+    }, [0, 0]);
+  }
+
+// TODO: update character condition
+  addRoundResultToCharacter = (character: Character): Character => {
+    if (this.isAbleToDice(character)) {
+      character.roll = this.rollDice();
+      const margin = character.attack - (character.roll + character.difficulty);
+      const result = this.getResult(margin, character.roll);
+      return {...character, dices: [...character.dices, result] };
+    }
+    return character;
+  }
+
+  rollDice(): number {
+    return this.rollD6() + this.rollD6() + this.rollD6();
+  }
+
+  rollD6(): number {
     return Math.floor(Math.random() * 6) + 1;
   }
 
@@ -59,8 +65,9 @@ export class RollService {
   isFail(margin: number): boolean {
     return (margin < 0);
   }
-  getNumOfSuccsAndFails(result: string): [number, number] {
-    switch (result) {
+  getLastRoundSuccsAndFails(character: Character): [number, number] {
+    const lastResult = character.dices[character.dices.length - 1];
+    switch (lastResult) {
       case '➖': return [0, 0];
       case '💥': return [2, 0];
       case '💀': return [0, 2];
@@ -68,6 +75,10 @@ export class RollService {
       case '❌': return [0, 1];
       default: return [0, 0];
     }
+  }
+
+  isAbleToDice(character: Character): boolean {
+    return (character.condition !== 'dead' && !character.stop);
   }
 
 
