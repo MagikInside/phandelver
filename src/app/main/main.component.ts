@@ -25,7 +25,9 @@ export class MainComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  roll(): void { }
+  roll(): void {
+    this.game.roll();
+  }
 
   reset(): void {}
   /*

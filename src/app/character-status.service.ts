@@ -17,6 +17,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 1
     },
     {
       dices: [] as string[],
@@ -25,6 +26,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 2
     },
     {
       dices: [] as string[],
@@ -33,6 +35,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 3
     },
     {
       dices: [] as string[],
@@ -41,6 +44,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 4
     },
     {
       dices: [] as string[],
@@ -49,6 +53,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 5
     },
     {
       dices: [] as string[],
@@ -57,6 +62,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 6
     },
     {
       dices: [] as string[],
@@ -65,6 +71,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 7
     },
     {
       dices: [] as string[],
@@ -73,6 +80,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 8
     },
     {
       dices: [] as string[],
@@ -81,6 +89,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 9
     },
     {
       dices: [] as string[],
@@ -89,6 +98,7 @@ export class CharacterStatusService {
       stop: false,
       roll: 0,
       heals: 0,
+      charId: 10
     }
   ];
 

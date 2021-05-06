@@ -5,4 +5,5 @@ export interface CharacterStatus {
   stop: boolean;
   roll: number;
   heals: number;
+  charId: number;
 }

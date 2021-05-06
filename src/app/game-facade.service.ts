@@ -7,6 +7,7 @@ import {CharacterStatusService} from './character-status.service';
 import {Character} from './models/character.model';
 import {CharacterStatus} from './models/character-status.model';
 import {Round} from './models/round.model';
+import {RollService} from './roll.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,8 @@ export class GameFacadeService {
   characterStatus$ = this.state$.pipe(map(state => state.characterStatus), distinctUntilChanged());
   round$ = this.state$.pipe(map(state => state.round), distinctUntilChanged());
 
-  constructor(private charactersService: CharactersService, private characterStatusService: CharacterStatusService) {
+  constructor(private charactersService: CharactersService, private characterStatusService: CharacterStatusService,
+              private rollService: RollService) {
     this.charactersService.character$.subscribe(characters => {
       this.store.next(this.#state = {...this.#state, characters});
     });
@@ -35,6 +37,8 @@ export class GameFacadeService {
   }
 
   roll(): void {
+    const newState = this.rollService.roll(this.#state);
+    this.store.next(this.#state = {...this.#state, characterStatus: newState.characterStatus, round: newState.round});
   }
 
 
