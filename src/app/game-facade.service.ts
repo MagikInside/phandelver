@@ -6,6 +6,7 @@ import {CharactersService} from './characters.service';
 import {Character} from './models/character.model';
 import {Round} from './models/round.model';
 import {RollService} from './roll.service';
+import {CharOptionsService} from './char-options.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class GameFacadeService {
   characters$ = this.state$.pipe(map(state => state.characters), distinctUntilChanged());
   round$ = this.state$.pipe(map(state => state.round), distinctUntilChanged());
 
-  constructor(private charactersService: CharactersService, private rollService: RollService) {
+  constructor(private charactersService: CharactersService, private rollService: RollService,
+              private charOptionsService: CharOptionsService) {
     this.charactersService.character$.subscribe(characters => {
       this.store.next(this.#state = {...this.#state, characters});
     });
@@ -35,12 +37,20 @@ export class GameFacadeService {
 
 
   reset(): void {
+    const newState = this.charOptionsService.reset(this.#state);
+    this.store.next(this.#state = {...this.#state, characters: newState.characters, round: newState.round});
   }
 
-  heal(character: Character): void {
+  heal(charId: string): void {
+    const newState = this.charOptionsService.healChar(charId, this.#state);
+    this.store.next(this.#state = {...this.#state, characters: newState.characters});
   }
 
   stopSwitch(character: Character): void {
+  }
+
+  selectDifficulty(character: Character): void {
+
   }
 
 }

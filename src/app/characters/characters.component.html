@@ -3,7 +3,7 @@
       <div class="info">
         <img alt="portrait" class="token" src="{{character.url}}" height="50" width="50px">
         <span>{{character.name}}</span>
-        <span class="heals"><span class="heal" (click)="heal(character)">❤</span><span class="num-of-heals">{{character.heals}}</span></span>
+        <div class="heals"><span class="heal" (click)="heal(character.id)">❤</span><span class="num-of-heals">{{character.heals}}</span></div>
         <!--<span>{{character.roll}}</span>-->
       </div>
       <div class="diff">
@@ -27,8 +27,8 @@
         </span>
       </div>
       <div class="stop">
-        <span *ngIf="!character.stop" (click)="stopSwitch(character)">⬛</span>
-        <span *ngIf="character.stop" (click)="stopSwitch(character)">►</span>
+        <span *ngIf="!character.stop" (click)="stopSwitch(character.id)">⬛</span>
+        <span *ngIf="character.stop" (click)="stopSwitch(character.id)">►</span>
       </div>
     </mat-card>
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Character} from '../models/character.model';
 
 @Component({
@@ -9,12 +9,18 @@ import {Character} from '../models/character.model';
 export class CharactersComponent implements OnInit {
 
   @Input() characters: Character[] | null = [];
+  @Output() healEvent = new EventEmitter<string>();
+  @Output() stopSwitchEvent = new EventEmitter<string>();
 
   ngOnInit(): void {
   }
 
-  heal(character: Character): void {}
-  stopSwitch(character: Character): void {}
+  heal(charId: string): void {
+    this.healEvent.emit(charId);
+  }
+  stopSwitch(charId: string): void {
+    this.stopSwitchEvent.emit(charId);
+  }
 
   /*
   heal(character: Character): void {

@@ -11,6 +11,7 @@ export class CharactersService {
 
   #characters =  [
     {
+      id: '1',
       name: 'Linene',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Linene%20Graywind_zpsnlrbtzhu.png',
       dices: [] as string[],
@@ -23,6 +24,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '2',
       name: 'Ben',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Ben%20Abbot_zpsfzjjtufn.png',
       dices: [] as string[],
@@ -35,6 +37,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '3',
       name: 'Aziz',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Aziz_zpsxepl0lls.png',
       dices: [] as string[],
@@ -47,6 +50,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '4',
       name: 'Sheras',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Sheras_zpsyfgdz1qm.png',
       dices: [] as string[],
@@ -59,6 +63,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '5',
       name: 'Bhayax',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Bhayax_zps0b7p56r7.png',
       dices: [] as string[],
@@ -71,6 +76,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '6',
       name: 'Hjaldur',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Hjaldur_zps2ogh1ft6.png',
       dices: [] as string[],
@@ -83,6 +89,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '7',
       name: 'Daran',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Daran%20Eldermath_zpsf54haqay.png',
       dices: [] as string[],
@@ -95,6 +102,7 @@ export class CharactersService {
       heals: 0
     },
     {
+      id: '8',
       name: 'Yurauk',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Yurauk_zpsgjmmmvdj.png',
       dices: [] as string[],
@@ -107,6 +115,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '9',
       name: 'Reman',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Reman_zpsmwj1vtgd.png',
       dices: [] as string[],
@@ -119,6 +128,7 @@ export class CharactersService {
       heals: 0,
     },
     {
+      id: '10',
       name: 'Bror',
       url: 'https://i27.photobucket.com/albums/c182/MaGiK_InSiDe/Tokens/Bror_zpsfk5ejb3r.png',
       dices: [] as string[],

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {GameState} from './models/game-state.model';
 import {Character} from './models/character.model';
+import {CharOptionsService} from './char-options.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import {Character} from './models/character.model';
 
 export class RollService {
 
-  constructor() { }
+  constructor(private charOptionsService: CharOptionsService) { }
 
   roll(gameState: GameState): GameState {
     const newCharacters = gameState.characters.map(this.addRoundResultToCharacter);
@@ -25,13 +26,12 @@ export class RollService {
     }, [0, 0]);
   }
 
-// TODO: update character condition
   addRoundResultToCharacter = (character: Character): Character => {
     if (this.isAbleToDice(character)) {
       character.roll = this.rollDice();
       const margin = character.attack - (character.roll + character.difficulty);
       const result = this.getResult(margin, character.roll);
-      const condition = this.calculateCondition(character);
+      const condition = this.charOptionsService.calculateCondition(character);
       return {...character, dices: [...character.dices, result], condition };
     }
     return character;
@@ -81,15 +81,5 @@ export class RollService {
   isAbleToDice(character: Character): boolean {
     return (character.condition !== 'dead' && !character.stop);
   }
-
-  calculateCondition(character: Character): string {
-    const wounds = character.dices.filter((dice) => dice === '❌').length
-      + character.dices.filter((dice) => dice === '💀').length * 2 - character.heals;
-    if (wounds > character.defense) { return 'dead'; }
-    else if (wounds === character.defense) { return 'critical'; }
-    else if (wounds > Math.floor(character.defense / 2)) { return 'injured'; }
-    else { return 'ok'; }
-  }
-
 
 }
