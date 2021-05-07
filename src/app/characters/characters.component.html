@@ -26,9 +26,9 @@
           <mat-icon class="💀" *ngIf="dice==='💀'">radio_button_checked</mat-icon>
         </span>
       </div>
-      <div class="stop">
-        <span *ngIf="!character.stop" (click)="stopSwitch(character.id)">⬛</span>
-        <span *ngIf="character.stop" (click)="stopSwitch(character.id)">►</span>
+      <div class="stop-switch">
+        <mat-icon class="stop" *ngIf="!character.stop" (click)="stopSwitch(character.id)">stop</mat-icon>
+        <mat-icon class="play" *ngIf="character.stop" (click)="stopSwitch(character.id)">play_arrow</mat-icon>
       </div>
     </mat-card>
 </div>

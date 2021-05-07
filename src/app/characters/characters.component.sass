@@ -21,8 +21,8 @@
       opacity: 0.8
       background-color: #ffe082
     &.paused
-      opacity: 0.8
-      background-color: #673ab7
+      opacity: 0.6
+      background-color: #bbdefb
     .info
       display: flex
       flex-direction: column
@@ -74,6 +74,17 @@
           color: #ffca28
         .💀
           color: #ba000d
+    .stop-switch
+      flex: 0 0 28px
+      cursor: pointer
+      opacity: 1
+      .mat-icon
+        font-size: 32px
+      .stop
+        color: #616161
+      .play
+        color: white
+
 
 
 
@@ -109,14 +120,7 @@
 .item.active
   opacity: 1
 
-.stop
-  flex: 0 0 20px
-  cursor: pointer
-  opacity: 0.6
-  font-size: 22px
-  color: white
-.stop:hover
-  opacity: 1
+
 
 
 

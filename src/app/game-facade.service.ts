@@ -46,7 +46,9 @@ export class GameFacadeService {
     this.store.next(this.#state = {...this.#state, characters: newState.characters});
   }
 
-  stopSwitch(character: Character): void {
+  stopSwitch(charId: string): void {
+    const newState = this.charOptionsService.stopSwitch(charId, this.#state);
+    this.store.next(this.#state = {...this.#state, characters: newState.characters});
   }
 
   selectDifficulty(character: Character): void {

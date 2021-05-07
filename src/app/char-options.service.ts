@@ -20,12 +20,20 @@ export class CharOptionsService {
   }
 
   healChar(charId: string, game: GameState): GameState {
-
     const newCharacters = game.characters.map(char => {
       if (char.id === charId) {
         const healedCharWithOldCondition = {...char, heals: char.heals + 1};
         const newCondition = this.calculateCondition(healedCharWithOldCondition);
         return {...healedCharWithOldCondition, condition: newCondition};
+      }
+      return char;
+    });
+    return {...game, characters: newCharacters};
+  }
+  stopSwitch(charId: string, game: GameState): GameState {
+    const newCharacters = game.characters.map(char => {
+      if (char.id === charId) {
+        return {...char, stop: !char.stop};
       }
       return char;
     });

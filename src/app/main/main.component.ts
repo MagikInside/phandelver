@@ -32,4 +32,7 @@ export class MainComponent implements OnInit {
   heal(charId: string): void {
     this.game.heal(charId);
   }
+  stopSwitch(charId: string): void {
+    this.game.stopSwitch(charId);
+  }
 }
