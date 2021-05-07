@@ -40,6 +40,16 @@ export class CharOptionsService {
     return {...game, characters: newCharacters};
   }
 
+  changeDifficulty(charId: string, difficulty: number, game: GameState): GameState {
+    const newCharacters = game.characters.map(char => {
+      if (char.id === charId) {
+        return {...char, difficulty};
+      }
+      return char;
+    });
+    return {...game, characters: newCharacters};
+  }
+
   calculateCondition(character: Character): string {
     const wounds = character.dices.filter((dice) => dice === '❌').length
       + character.dices.filter((dice) => dice === '💀').length * 2 - character.heals;

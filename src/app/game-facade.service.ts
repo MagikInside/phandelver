@@ -51,8 +51,9 @@ export class GameFacadeService {
     this.store.next(this.#state = {...this.#state, characters: newState.characters});
   }
 
-  selectDifficulty(character: Character): void {
-
+  changeDifficulty(charId: string, difficulty: number): void {
+    const newState = this.charOptionsService.changeDifficulty(charId, difficulty, this.#state);
+    this.store.next(this.#state = {...this.#state, characters: newState.characters});
   }
 
 }

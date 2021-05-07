@@ -35,4 +35,7 @@ export class MainComponent implements OnInit {
   stopSwitch(charId: string): void {
     this.game.stopSwitch(charId);
   }
+  changeDifficulty([charId, difficulty]: [string, number]): void {
+    this.game.changeDifficulty(charId, difficulty);
+  }
 }
