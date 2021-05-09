@@ -11,6 +11,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { InfoComponent } from './info/info.component';
 import { CharactersComponent } from './characters/characters.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyDlwY0ZtwEXwdz-pCGZXDLirPxr525n5Ws',
+  authDomain: 'phandelver-e0f36.firebaseapp.com',
+  projectId: 'phandelver-e0f36',
+  storageBucket: 'phandelver-e0f36.appspot.com',
+  messagingSenderId: '460547173709',
+  appId: '1:460547173709:web:fca91513ee00d919a15b04',
+  measurementId: 'G-Q09M0326L8'
+};
 
 @NgModule({
   declarations: [
@@ -22,6 +34,8 @@ import { CharactersComponent } from './characters/characters.component';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule, // firestore
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
