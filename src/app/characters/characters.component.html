@@ -3,7 +3,7 @@
       <div class="info">
         <img alt="portrait" class="token" src="{{character.url}}" height="50" width="50px">
         <span>{{character.name}}</span>
-        <div class="heals"><span class="heal" (click)="heal(character.id)">❤</span><span class="num-of-heals">{{character.heals}}</span></div>
+        <div class="heals"><mat-icon class="heal" (click)="heal(character.id)">favorite</mat-icon><span *ngIf="character.heals > 0" class="num-of-heals">{{character.heals}}</span></div>
         <!--<span>{{character.roll}}</span>-->
       </div>
       <div class="diff">
