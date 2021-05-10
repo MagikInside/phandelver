@@ -33,6 +33,7 @@ export class GameFacadeService {
   roll(): void {
     const newState = this.rollService.roll(this.#state);
     this.store.next(this.#state = {...this.#state, characters: newState.characters, round: newState.round});
+    //    this.charactersService.characters = newState.characters;
   }
 
 
