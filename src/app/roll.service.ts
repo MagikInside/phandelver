@@ -14,7 +14,7 @@ export class RollService {
   roll(gameState: GameState): GameState {
     const newCharacters = gameState.characters.map(this.addRoundResultToCharacter);
     const [roundSuccs, roundFails] = this.getRoundSucssAndFails(newCharacters);
-    const round = {number: gameState.round.number + 1, lastSuccs: roundSuccs, lastFails: roundFails,
+    const round = {id: gameState.round.id, number: gameState.round.number + 1, lastSuccs: roundSuccs, lastFails: roundFails,
       totalSuccs: gameState.round.totalSuccs + roundSuccs, totalFails: gameState.round.totalFails + roundFails};
     return {...gameState, characters: newCharacters, round};
   }

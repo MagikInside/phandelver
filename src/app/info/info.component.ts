@@ -7,7 +7,7 @@ import {Round} from '../models/round.model';
   styleUrls: ['./info.component.sass']
 })
 export class InfoComponent implements OnInit {
-  @Input() round: Round | null = {number: 0, lastSuccs: 0, lastFails: 0, totalSuccs: 0, totalFails: 0} ;
+  @Input() round: Round | null = {id: '', number: 0, lastSuccs: 0, lastFails: 0, totalSuccs: 0, totalFails: 0} ;
 
   constructor() { }
 

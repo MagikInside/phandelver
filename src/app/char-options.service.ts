@@ -11,7 +11,7 @@ export class CharOptionsService {
 
   reset(game: GameState): GameState {
     const resetCharacters = game.characters.map(this.resetCharacter);
-    const resetRound = {number: 0, lastSuccs: 0, lastFails: 0, totalSuccs: 0, totalFails: 0};
+    const resetRound = {id: game.round.id, number: 0, lastSuccs: 0, lastFails: 0, totalSuccs: 0, totalFails: 0};
     return {...game, characters: resetCharacters, round: resetRound};
   }
 
@@ -19,35 +19,18 @@ export class CharOptionsService {
     return {...character, dices: [] as string[], condition: 'ok' , difficulty: 0, stop: false, roll: 0, heals: 0};
   }
 
-  healChar(charId: string, game: GameState): GameState {
-    const newCharacters = game.characters.map(char => {
-      if (char.id === charId) {
-        const healedCharWithOldCondition = {...char, heals: char.heals + 1};
-        const newCondition = this.calculateCondition(healedCharWithOldCondition);
-        return {...healedCharWithOldCondition, condition: newCondition};
-      }
-      return char;
-    });
-    return {...game, characters: newCharacters};
-  }
-  stopSwitch(charId: string, game: GameState): GameState {
-    const newCharacters = game.characters.map(char => {
-      if (char.id === charId) {
-        return {...char, stop: !char.stop};
-      }
-      return char;
-    });
-    return {...game, characters: newCharacters};
+  healChar(character: Character): Character {
+    const healedCharWithOldCondition = {...character, heals: character.heals + 1};
+    const newCondition = this.calculateCondition(healedCharWithOldCondition);
+    return {...healedCharWithOldCondition, condition: newCondition};
   }
 
-  changeDifficulty(charId: string, difficulty: number, game: GameState): GameState {
-    const newCharacters = game.characters.map(char => {
-      if (char.id === charId) {
-        return {...char, difficulty};
-      }
-      return char;
-    });
-    return {...game, characters: newCharacters};
+  stopSwitch(character: Character): Character {
+    return {...character, stop: !character.stop};
+  }
+
+  changeDifficulty(character: Character, difficulty: number): Character {
+    return {...character, difficulty};
   }
 
   calculateCondition(character: Character): string {
@@ -55,7 +38,7 @@ export class CharOptionsService {
       + character.dices.filter((dice) => dice === '💀').length * 2 - character.heals;
     if (wounds > character.defense) { return 'dead'; }
     else if (wounds === character.defense) { return 'critical'; }
-    else if (wounds > Math.floor(character.defense / 2)) { return 'injured'; }
+    else if (wounds >= Math.floor(character.defense / 2)) { return 'injured'; }
     else { return 'ok'; }
   }
 

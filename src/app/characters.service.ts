@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 import {Character} from './models/character.model';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 
@@ -19,9 +19,15 @@ export class CharactersService {
   }
 
   set characters(characters: Character[]) {
-    characters.forEach(character => {
-      this.charactersCollection.doc(character.id).set(character);
-    });
+    characters
+      .filter(character => !character.stop && character.condition !== 'dead')
+      .forEach(character => {
+        this.charactersCollection.doc(character.id).set(character);
+      });
+  }
+
+  updateCharacter(character: Character): void {
+    this.charactersCollection.doc(character.id).set(character);
   }
 
 }
