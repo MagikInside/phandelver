@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {GameState} from './models/game-state.model';
 import {Character} from './models/character.model';
+import {Condition} from './models/condition.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CharOptionsService {
   }
 
   private resetCharacter(character: Character): Character {
-    return {...character, dices: [] as string[], condition: 'ok' , difficulty: 0, stop: false, roll: 0, heals: 0};
+    return {...character, dices: [] as string[], condition: Condition.Ok , difficulty: 0, stop: false, roll: 0, heals: 0};
   }
 
   healChar(character: Character): Character {
@@ -33,13 +34,13 @@ export class CharOptionsService {
     return {...character, difficulty};
   }
 
-  calculateCondition(character: Character): string {
+  calculateCondition(character: Character): Condition {
     const wounds = character.dices.filter((dice) => dice === '❌').length
       + character.dices.filter((dice) => dice === '💀').length * 2 - character.heals;
-    if (wounds > character.defense) { return 'dead'; }
-    else if (wounds === character.defense) { return 'critical'; }
-    else if (wounds >= Math.floor(character.defense / 2)) { return 'injured'; }
-    else { return 'ok'; }
+    if (wounds > character.defense) { return Condition.Dead; }
+    else if (wounds === character.defense) { return Condition.Critical; }
+    else if (wounds >= Math.floor(character.defense / 2)) { return Condition.Injured; }
+    else { return Condition.Ok; }
   }
 
 }

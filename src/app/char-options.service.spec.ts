@@ -1,5 +1,6 @@
 import {CharOptionsService} from './char-options.service';
 import {gameState3Rolls, mockChars} from './mocks';
+import {Condition} from './models/condition.enum';
 
 describe('CharOptionsService', () => {
   let charOptionsService: CharOptionsService;
@@ -9,7 +10,7 @@ describe('CharOptionsService', () => {
   });
 
   it('the reset method should return a new GameState, with character and round values reset', () => {
-    const resetChar = {...gameState3Rolls.characters[0], dices: [], condition: 'ok', difficulty: 0, heals: 0, roll: 0, stop: false};
+    const resetChar = {...gameState3Rolls.characters[0], dices: [], condition: Condition.Ok, difficulty: 0, heals: 0, roll: 0, stop: false};
     const resetRound = {id: gameState3Rolls.round.id, number: 0, lastSuccs: 0, lastFails: 0, totalSuccs: 0, totalFails: 0};
 
     const newGameState = charOptionsService.reset(gameState3Rolls);
@@ -35,7 +36,6 @@ describe('CharOptionsService', () => {
     expect(newChar.stop).toBe(!mockChars[0].stop);
   });
 
-  // TODO: difficulty and condition enums
   it('changeDifficulty method should return a new character with the new difficulty', () => {
     const newDifficulty = mockChars[0].difficulty + 1;
     const newChar = charOptionsService.changeDifficulty(mockChars[0], newDifficulty);

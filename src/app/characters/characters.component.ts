@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Character} from '../models/character.model';
+import {Difficulty} from '../models/difficulty.enum';
+import {Condition} from '../models/condition.enum';
+
 
 @Component({
   selector: 'app-characters',
@@ -12,6 +15,8 @@ export class CharactersComponent implements OnInit {
   @Output() healEvent = new EventEmitter<string>();
   @Output() stopSwitchEvent = new EventEmitter<string>();
   @Output() changeDiffEvent = new EventEmitter<[string, number]>();
+  Difficulty = Difficulty;
+  Condition = Condition;
 
   ngOnInit(): void {
   }
