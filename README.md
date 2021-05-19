@@ -5,7 +5,7 @@ Demo project built from initial [StackBlitz implementation](https://stackblitz.c
 
 This project uses **Angular 12** alongside **Angular Material** with a responsive design. The unit tests are carried out with **Jasmine / Karma** and the e2e tests with **Cypress**. **Cloud Firestore** is used for persistence and real-time updates. The demo version is stored in **Firebase**.
 
-##Demo
+## Demo
 
 [Here](https://phandelver-e0f36.web.app/) you can see a demo version of the project, hosted on Firebase. 
 Roll results persist between sessions, and can be checked in real time from another browser or in incognito mode.
