@@ -25,7 +25,6 @@ export class MainComponent implements OnInit {
   roll(): void {
     this.game.roll();
   }
-
   reset(): void {
     this.game.reset();
   }
