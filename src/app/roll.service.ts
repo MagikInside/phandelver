@@ -26,7 +26,7 @@ export class RollService {
     }, [0, 0]);
   }
 
-  addRoundResultToCharacter = (character: Character): Character => {
+  private addRoundResultToCharacter = (character: Character): Character => {
     if (this.isAbleToDice(character)) {
       character.roll = this.rollDice();
       const margin = character.attack - (character.roll + character.difficulty);
@@ -37,15 +37,15 @@ export class RollService {
     return character;
   }
 
-  rollDice(): number {
+  private rollDice(): number {
     return this.rollD6() + this.rollD6() + this.rollD6();
   }
 
-  rollD6(): number {
+  private rollD6(): number {
     return Math.floor(Math.random() * 6) + 1;
   }
 
-  getResult(margin: number, diceRoll: number): string {
+  private getResult(margin: number, diceRoll: number): string {
     if (margin === 0) { return '➖'; }
     else if (this.isCritical(margin, diceRoll)) { return '💥'; }
     else if (this.isFailure(margin, diceRoll)) { return '💀'; }
@@ -54,19 +54,19 @@ export class RollService {
     else { throw new Error('not valid diceRoll margin');  }
   }
 
-  isCritical(margin: number, diceRoll: number): boolean {
+  private isCritical(margin: number, diceRoll: number): boolean {
     return (margin > 7 || diceRoll <= 4);
   }
-  isFailure(margin: number, diceRoll: number): boolean {
+  private isFailure(margin: number, diceRoll: number): boolean {
     return (margin < -7 || diceRoll >= 17);
   }
-  isSuccess(margin: number): boolean {
+  private isSuccess(margin: number): boolean {
     return (margin > 0);
   }
-  isFail(margin: number): boolean {
+  private isFail(margin: number): boolean {
     return (margin < 0);
   }
-  getLastRoundSuccsAndFails(character: Character): [number, number] {
+  private getLastRoundSuccsAndFails(character: Character): [number, number] {
     const lastResult = character.dices[character.dices.length - 1];
     switch (lastResult) {
       case '➖': return [0, 0];
@@ -78,7 +78,7 @@ export class RollService {
     }
   }
 
-  isAbleToDice(character: Character): boolean {
+  private isAbleToDice(character: Character): boolean {
     return (character.condition !== 'dead' && !character.stop);
   }
 
