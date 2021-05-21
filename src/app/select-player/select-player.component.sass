@@ -1,0 +1,29 @@
+#select-player
+  height: calc(100% - 60px)
+  display: flex
+  flex-direction: row
+  .player
+    flex: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    .mat-icon
+      position: absolute
+      height: 300px
+      width: 300px
+      font-size: 300px
+      color: white
+      opacity: 0.2
+      z-index: 1
+      user-select: none
+    &.player1
+      background-color: #e57373
+    &.player2
+      background-color: #64b5f6
+    button
+      z-index: 2
+
+@media only screen and (max-width: 800px)
+
+  #select-player
+    flex-direction: column

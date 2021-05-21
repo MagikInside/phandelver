@@ -13,6 +13,8 @@ import { InfoComponent } from './info/info.component';
 import { CharactersComponent } from './characters/characters.component';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AppRoutingModule } from './app-routing.module';
+import { SelectPlayerComponent } from './select-player/select-player.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDlwY0ZtwEXwdz-pCGZXDLirPxr525n5Ws',
@@ -30,7 +32,8 @@ const firebaseConfig = {
     HeaderComponent,
     MainComponent,
     InfoComponent,
-    CharactersComponent
+    CharactersComponent,
+    SelectPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ const firebaseConfig = {
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
