@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SelectPlayerComponent } from './select-player/select-player.component';
 import { SelectCharactersComponent } from './select-characters/select-characters.component';
 import { DisplayComponent } from './display/display.component';
+import { SelectionComponent } from './selection/selection.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDlwY0ZtwEXwdz-pCGZXDLirPxr525n5Ws',
@@ -37,7 +38,8 @@ const firebaseConfig = {
     CharactersComponent,
     SelectPlayerComponent,
     SelectCharactersComponent,
-    DisplayComponent
+    DisplayComponent,
+    SelectionComponent
   ],
   imports: [
     BrowserModule,

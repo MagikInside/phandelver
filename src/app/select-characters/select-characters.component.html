@@ -1,8 +1,7 @@
 <div id="select-characters">
   <app-display class="display" [characters]="characters$ | async"></app-display>
-  <section class="player">
-
-  </section>
+  <app-selection class="player" [character]="(characters$ | async)![2]">
+  </app-selection>
   <section class="rival">
 
   </section>
