@@ -3,20 +3,20 @@
               [ngClass]="{'dead': character.condition === Condition.Dead, 'injured': character.condition === Condition.Injured,
                'critical': character.condition === Condition.Critical, 'paused': character.stop}">
       <div class="info">
-        <img alt="portrait" class="token" src="{{character.url}}" height="50" width="50px">
+        <img alt="portrait" class="token" src="assets/imgs/characters/{{character.url}}" height="50" width="50px">
         <span>{{character.name}}</span>
         <div class="heals"><mat-icon class="heal" (click)="heal(character.id)">favorite</mat-icon><span *ngIf="character.heals > 0" class="num-of-heals">{{character.heals}}</span></div>
         <!--<span>{{character.roll}}</span>-->
       </div>
       <div class="diff">
-        <img alt="mouse difficulty" src="assets/mouse.svg" class="item" [ngClass]="{'active': character.difficulty === Difficulty.Rat}"
-       (click)="changeDifficulty(character.id, Difficulty.Rat)">
-        <img alt="cobra difficulty" src="assets/cobra.svg"  class="item" [ngClass]="{'active': character.difficulty === Difficulty.Cobra}"
-        (click)="changeDifficulty(character.id, Difficulty.Cobra)">
-        <img  alt="lion difficulty" src="assets/leo.svg"  class="item" [ngClass]="{'active': character.difficulty === Difficulty.Lion}"
-        (click)="changeDifficulty(character.id, Difficulty.Lion)">
-        <img  alt="dragon difficulty" src="assets/b-dragon.svg"  class="item" [ngClass]="{'active': character.difficulty === Difficulty.Dragon}"
-        (click)="changeDifficulty(character.id, Difficulty.Dragon)">
+        <img alt="mouse difficulty" src="../../assets/imgs/icons/mouse.svg" class="item" [ngClass]="{'active': character.difficulty === Difficulty.Rat}"
+             (click)="changeDifficulty(character.id, Difficulty.Rat)">
+        <img alt="cobra difficulty" src="../../assets/imgs/icons/cobra.svg" class="item" [ngClass]="{'active': character.difficulty === Difficulty.Cobra}"
+             (click)="changeDifficulty(character.id, Difficulty.Cobra)">
+        <img alt="lion difficulty" src="../../assets/imgs/icons/leo.svg" class="item" [ngClass]="{'active': character.difficulty === Difficulty.Lion}"
+             (click)="changeDifficulty(character.id, Difficulty.Lion)">
+        <img alt="dragon difficulty" src="../../assets/imgs/icons/b-dragon.svg" class="item" [ngClass]="{'active': character.difficulty === Difficulty.Dragon}"
+             (click)="changeDifficulty(character.id, Difficulty.Dragon)">
       </div>
 
       <div class="dices">
