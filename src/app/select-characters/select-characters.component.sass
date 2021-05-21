@@ -1,0 +1,23 @@
+#select-characters
+  height: calc(100% - 60px)
+  display: grid
+  grid-template-columns:  50% 50%
+  grid-template-rows: 20% 80%
+  grid-template-areas: "display display" "player rival"
+  .display
+    grid-area: display
+
+  .player
+    grid-area: player
+    background-color: #2196f3
+  .rival
+    grid-area: rival
+    background-color: #f44336
+
+@media only screen and (max-width: 800px)
+  #select-characters
+    grid-template-columns:  100%
+    grid-template-rows: 20% 80%
+    grid-template-areas: "display" "player"
+
+

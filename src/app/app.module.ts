@@ -15,6 +15,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { SelectPlayerComponent } from './select-player/select-player.component';
+import { SelectCharactersComponent } from './select-characters/select-characters.component';
+import { DisplayComponent } from './display/display.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDlwY0ZtwEXwdz-pCGZXDLirPxr525n5Ws',
@@ -33,7 +35,9 @@ const firebaseConfig = {
     MainComponent,
     InfoComponent,
     CharactersComponent,
-    SelectPlayerComponent
+    SelectPlayerComponent,
+    SelectCharactersComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,
