@@ -1,11 +1,12 @@
-<app-info [round]="round$ | async"></app-info>
+<section class="main">
+  <app-info [round]="round$ | async"></app-info>
 
-<app-characters [characters]="characters$ | async" (healEvent)="heal($event)" (stopSwitchEvent)="stopSwitch($event)" (changeDiffEvent)="changeDifficulty($event)"></app-characters>
+  <app-characters [characters]="characters$ | async" (healEvent)="heal($event)" (stopSwitchEvent)="stopSwitch($event)" (changeDiffEvent)="changeDifficulty($event)"></app-characters>
 
-<div class="buttons">
-  <button mat-raised-button id="roll" color="primary" (click)="roll()">Roll!</button>
-  <button mat-raised-button id="reset" (click)="reset()">reset</button>
-</div>
-
+  <div class="buttons">
+    <button mat-raised-button id="roll" color="primary" (click)="roll()">Roll!</button>
+    <button mat-raised-button id="reset" (click)="reset()">reset</button>
+  </div>
+</section>
 
 
